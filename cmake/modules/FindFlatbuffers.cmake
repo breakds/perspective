@@ -26,16 +26,14 @@
 # this might fail
 # https://gitlab.kitware.com/cmake/cmake/issues/19120
 find_path(FLATBUFFERS_INCLUDE_DIR flatbuffers/flatbuffers.h
-  PATHS ${FLATBUFFERS_ROOT}/include
+  PATHS ${FLATBUFFERS_ROOT}/include ENV FLATBUFFERS_ROOT
   HINTS /usr/local /usr/local/flatbuffers /usr/local/Homebrew /usr ~/homebrew/ /usr/local/include /usr/local/flatbuffers/include /usr/include ~/homebrew/include
-  NO_CMAKE_SYSTEM_PATH
-  NO_SYSTEM_ENVIRONMENT_PATH)
+  NO_CMAKE_SYSTEM_PATH)
 
 find_program(FLATBUFFERS_COMPILER flatc
-  PATHS ${FLATBUFFERS_ROOT}/bin
+  PATHS ${FLATBUFFERS_ROOT}/bin ENV FLATBUFFERS_ROOT
   HINTS /usr/local/bin /usr/bin /usr/local/Homebrew/bin ~/homebrew/bin
-  NO_CMAKE_SYSTEM_PATH
-  NO_SYSTEM_ENVIRONMENT_PATH)
+  NO_CMAKE_SYSTEM_PATH)
 
 if(NOT ${FLATBUFFERS_INCLUDE_DIR})
   # HACK
